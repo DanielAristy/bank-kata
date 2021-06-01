@@ -1,4 +1,9 @@
+import java.io.PrintStream;
+
 public class Account {
+
+    public Account(Statement statement) {
+    }
 
     void deposit(int amount) {
 
@@ -8,7 +13,7 @@ public class Account {
 
     }
 
-    void printStatements() {
+    void printStatements(PrintStream out) {
 
     }
 
