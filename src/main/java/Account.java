@@ -1,6 +1,10 @@
 import java.io.PrintStream;
+import java.util.Date;
 
 public class Account {
+
+    private Statement statement;
+    private Amount balance = Amount.amountOf(0);
 
     public Account(Statement statement) {
     }
@@ -15,6 +19,13 @@ public class Account {
 
     void printStatements(PrintStream out) {
 
+    }
+
+    private void recordTransaction(Amount value, Date date) {
+        Transaction transaction = new Transaction(value, date);
+        Amount balanceAfterTransaction = transaction.balanceAfterTransaction(balance);
+        balance = balanceAfterTransaction;
+        statement.addLineContaining(transaction, balanceAfterTransaction);
     }
 
 }
