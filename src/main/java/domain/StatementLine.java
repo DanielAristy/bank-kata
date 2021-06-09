@@ -1,3 +1,7 @@
+package domain;
+
+import domain.Amount;
+
 public class StatementLine {
 
     private Transaction transaction;
