@@ -21,14 +21,14 @@ public class Account {
         recordTransaction(amount, date);
     }
 
-    void withdrawal(Amount amount, Date date){
-        recordTransaction(amount.negative(), date);
+    public void withdrawal(Amount value, Date date) {
+        recordTransaction(value.negative(), date);
     }
 
-    void printStatements(PrintStream out) {
-
+    public void printStatement(PrintStream printer) {
+        statement.printTo(printer);
     }
-    //
+
     private void recordTransaction(Amount value, Date date) {
         Transaction transaction = new Transaction(value, date);
         Amount balanceAfterTransaction = transaction.balanceAfterTransaction(balance);

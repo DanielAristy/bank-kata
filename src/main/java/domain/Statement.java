@@ -3,6 +3,7 @@ package domain;
 import domain.Amount;
 import domain.StatementLine;
 
+import java.io.PrintStream;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,10 +14,21 @@ public class Statement {
     // Formato para imprirmi los resultados por consola
     public static final String STATEMENT_HEADER = "date       | credit   | debit    | balance";
 
-    private List<StatementLine> statementLines = new LinkedList<>();
+    private List<StatementLine> statementLines = new LinkedList<StatementLine>();
 
     public void addLineContaining(Transaction transaction, Amount currentBalance) {
         statementLines.add(TOP_OF_THE_LIST, new StatementLine(transaction, currentBalance));
+    }
+
+    public void printTo(PrintStream printer) {
+        printer.println(STATEMENT_HEADER);
+        printStatementLines(printer);
+    }
+
+    private void printStatementLines(PrintStream printer) {
+        for (StatementLine statementLine : statementLines) {
+            statementLine.printTo(printer);
+        }
     }
 
 }
