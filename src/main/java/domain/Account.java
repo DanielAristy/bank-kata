@@ -12,15 +12,17 @@ public class Account {
     private Statement statement;
     private Amount balance = Amount.amountOf(0);
 
+    //Constructor para instancia de este objeto que se declara en la clase
     public Account(Statement statement) {
+        this.statement = statement;
     }
 
-    void deposit(int amount) {
-
+    public void deposit(Amount amount, Date date) {
+        recordTransaction(amount, date);
     }
 
-    void withdraw(int amount){
-
+    void withdrawal(Amount amount, Date date){
+        recordTransaction(amount.negative(), date);
     }
 
     void printStatements(PrintStream out) {
